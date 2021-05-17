@@ -1,0 +1,72 @@
+@mixin clearfix{
+    &::after{ //.row::after
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin absCenter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+//BHAI SAHAB SYNTAX KO DHYAAN M RKHNAA (VOI KRNE AAYA HUN DUBAARA🤣😂🤣) 
+
+
+
+//  MEDIA QUERY MANAGER
+/*
+0 - 600px ----> Phone
+600 - 900px ----> Tablet(Portrait)
+900 - 1200px ----> Tablet(Landscape)
+1200px - 1800px ---> Desktop (Normal styles are applied)
+1800px <= ------>Big Screens
+*/
+
+//@mixin respond-phone{
+//    @media (max-width: 600px){
+//        @content; //this is a directive in sass to pass a content block of code in to mixin
+//    }
+//}
+
+
+/*
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
+
+//ORDER: Base + typography > General Layout + Grid > Page Layout > Components
+
+
+//in this mixin we are passing an argument
+@mixin respond($breakpoint){
+    //this is an if directive is sass, used to apply the styles only when a particular condition is true
+    //em are the best option for media queries
+    //1em = 16px  (THIS IS STANDARD)
+    //hum em mein isliye kr rhe hain kyunki agar user font size change krta h browser m toh uss situation ko best handle em krta hai
+    @if $breakpoint==phone {
+        @media only screen and (max-width: 37.5em){ @content };   // 600/16 = 37.5em
+    }
+
+    @if $breakpoint==tab-port {
+        @media only screen and (max-width: 56.25em){ @content };    // 900/16 = 56.25em
+    }
+
+    @if $breakpoint== tab-land {
+        @media only screen and (max-width: 75em){ @content };   // 1200/16 = 75em 
+    }
+
+    @if $breakpoint== big-desktop {
+        @media only screen and (min-width: 112.5em){ @content };   // 1800/16 = 112.5em
+    }
+
+}
+
+

@@ -1,0 +1,80 @@
+/* reseting browser css to null  and this is done by UNIVERSAL SELECTOR*/
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+  // STANDARD IS 16px = 1rem;  i.e 1px == 1/16rem (IMPORTANT) 
+  /* Making use of rem unit */
+  html {
+    font-size: 62.5%;  // 1rem = 10px; i.e 10px/16px = 62.5%
+  
+    //font-size: 10px; ye likhna galat hoga bcz now we remove the ability for the user to change i.e     (inc/dec) the default size of the browser , so those will not be satisfied to view my website
+  //So default size will always remain 10px, even if user inc/dec font size, SO THIS IS BAD PRACTICE
+
+
+    //@include respond(phone){  // ye un-necessary hai kyunki same hai font size
+    //  font-size: 50%;
+    //}
+
+//AS per, STANDARD we should put all larger media quereis before smaller ones
+//to handle the conflicts 
+
+
+
+    @include respond(tab-land){   //width < 1200
+      font-size: 56.5%;    // 1rem = 9px; i.e 9/16 = 56.5%
+    }
+
+    @include respond(tab-port){   //width < 900
+      font-size: 50%;    // 1rem = 8px, i.e 8/16 = 50%
+    }
+
+    //@include respond(phone){ //width < 600
+    //  font-size: 30%;    //1rem = 4.8px, 4.8/16 = 30%
+    //}
+
+    @include respond(big-desktop){
+      font-size: 75%;     // 1rem = 12px i.e 12/16 = 75%
+    }
+
+  }
+  
+  /* *Note* font-family universal selector m nhi❌ declare hogi vo body selector m declare hogi, 
+    CSS INHERITANCE KA USE KRNE K LIYE   */
+  body {
+    //font-size:16px;
+    box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port){   //width < 900
+      padding: 0;    
+    }
+  }
+  
+
+  ::selection{
+    background-color: $color-primary;
+    color: $color-white;
+  }
+  
+  
+  /*  background-color: blanchedalmond;
+      position: absolute;
+      right: 33%;
+      top: 95%;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(13, 18, 24, 0.548);
+      font-size: 90%;
+      font-weight: 700;
+    padding-top: 2rem;
+    padding-bottom: 13px;
+    padding-left: 45px;
+    padding-right: 45px;
+    border-radius: 45px; */
+  /* &::after {
+    } */
+  

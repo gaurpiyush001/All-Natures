@@ -1,0 +1,139 @@
+.popup{
+    background-color: rgba($color-black, .8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2500;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    &:target{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content{
+        transform: translate(-50%,-50%) scale(1);
+        opacity: 1;
+    }
+
+    &__close{
+        &:link,&:visited{
+            color: $color-black;
+            position: absolute;
+            top:2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform .3s;
+            @include respond(tab-land){
+                top: 1.8rem;
+                right: 1.8rem;
+                font-size: 2.5rem;
+            }
+            @include respond(phone){
+                top: 1.3rem;
+                right: 1.3rem;
+                font-size: 2rem;
+            }
+        }
+
+        &:hover{
+            color: $color-primary;
+            transform: scale(1.3);
+            @include respond(tab-land){
+                top: 1.8rem;
+                right: 1.8rem;
+                font-size: 2.5rem;
+            }
+            @include respond(phone){
+                top: 1.3rem;
+                right: 1.3rem;
+                font-size: 2rem;
+            }
+        }
+    }
+
+    &__content{
+        @include absCenter;
+        position: absolute;
+        width: 75%;
+        background-color: $color-white;
+        box-shadow: 0 2rem 4rem rgba($color-black, .2);
+        border-radius: 3px;
+        display: table;
+        overflow: hidden;
+        opacity: 0;
+        transform: translate(-50%,-50%) scale(0);
+        transition: all .4s .2s;
+
+        @include respond(tab-land){
+            // float: left;
+            display: block;
+            // width: 100%;
+            height: 75%;
+            overflow: scroll;
+            // position: absolute;
+        }
+    }
+
+    &__left{
+        width: 33.3333333%;
+        display: table-cell;
+        @include respond(tab-land){
+            // float: left;
+            display: inline-block;
+            position: relative;
+            width: 100%;
+            // position: absolute;
+        }
+    }
+
+    &__right{
+        width: 66.6666666%;
+        display: table-cell;
+        vertical-align: middle;
+        padding: 3rem 5rem;
+        @include respond(tab-land){
+            width: 100%;
+            display: block;
+            // float: left;
+            // display: none;
+            // position: relative;
+        }
+    }
+
+    &__img{
+        display: block;
+        width: 100%;
+        @include respond(tab-land){
+            // float: left;
+            // clear: top;
+            display: inline-block;
+            width: 49%;
+            // height: ;
+        }
+    }
+
+    &__text{
+        font-size: 1.4rem;
+        margin-bottom: 3.4rem;
+
+        -moz-column-count: 2;
+        -moz-column-gap: 4rem;
+        -moz-column-rule: 1px solid $color-grey-light-2;
+
+        column-count: 2;
+        column-gap: 4rem;
+        column-rule: 1px solid $color-grey-light-2;
+
+        hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+    }
+
+}
