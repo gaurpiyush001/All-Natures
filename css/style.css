@@ -319,7 +319,7 @@ body {
     .composition__photo:hover {
       outline: 1.5rem solid #55c57a;
       transform: scale(1.05) translateY(-0.5rem);
-      z-index: 2;
+      z-index: 11;
       box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.6); }
   .composition:hover .composition__photo:not(:hover) {
     transform: scale(0.9); }
